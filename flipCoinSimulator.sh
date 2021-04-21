@@ -1,3 +1,4 @@
+#!/bin/bash -x
 echo "welcome"
 
 #UC1
@@ -56,3 +57,30 @@ then
 else
      echo "tail won by " $(($tailCount-$headCount))
 fi
+
+#UC4
+#headCount=16
+#tailCount=16
+if [ $headCount -eq $tailCount ]
+then
+     
+      while [[ $(($headCount-$tailCount)) -lt 2 && $(($tailCount-$headCount)) -lt 2 ]]
+      do
+           res=$((RANDOM%2))
+          if [ $res -eq 1 ]
+          then
+               ((headCount++))
+          else
+                ((tailCount++))
+          fi
+      done
+        echo $headCount
+        echo $tailCount
+        echo "Minimum difference of two has achieved"           
+elif [  $headCount -gt $tailCount ]
+then
+     echo "Head won by " $(($headCount-$tailCount))
+else
+     echo "tail won by " $(($tailCount-$headCount))
+fi
+
